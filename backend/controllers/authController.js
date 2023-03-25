@@ -72,3 +72,14 @@ exports.signin = async (req, res, next)=>{
         message: "Successfully logged out"
     })
  }
+
+
+ //User profile
+
+ exports.userProfile = async (req, res, next) => {
+    const user = await User.findById(req.user.id).select('-password');
+    res.status(200).json({
+        success: true,
+       user
+    })
+ }
