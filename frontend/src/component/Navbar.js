@@ -15,7 +15,7 @@ import WorkIcon from '@mui/icons-material/Work';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { userLogoutAction } from '../../src/redux/actions/userActions';
+import { userLogoutAction } from '../redux/actions/userAction';
 
 const pages = ['Home', 'Log In'];
 
@@ -172,7 +172,11 @@ const Navbar = () => {
                         >
 
                             <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.primary.main }} to="/admin/dashboard">Dashboard</Link></Typography>
+                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.primary.main }} to="/admin/dashboard"> Admin Dashboard</Link></Typography>
+                            </MenuItem>
+
+                            <MenuItem onClick={handleCloseUserMenu}>
+                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.primary.main }} to="/user/dashboard"> User Dashboard</Link></Typography>
                             </MenuItem>
 
                             {

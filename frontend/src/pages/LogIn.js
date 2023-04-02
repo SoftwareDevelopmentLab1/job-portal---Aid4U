@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux'
-import { userSignInAction } from '../../src/redux/actions/userActions'
+import { userSignInAction } from '../redux/actions/userAction'
 import { useNavigate } from 'react-router-dom'
 
 const validationSchema = yup.object({
@@ -27,11 +27,20 @@ const validationSchema = yup.object({
 const LogIn = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { isAuthenticated } = useSelector(state => state.signIn);
+    const { isAuthenticated, userInfo } = useSelector(state => state.signIn);
     useEffect(() => {
+
         if (isAuthenticated) {
-            navigate('/user/dashboard');
+            if (userInfo.role === 1) {
+                navigate('/admin/dashboard');
+            } else {
+                navigate('/user/dashboard');
+            }
         }
+
+        // if (isAuthenticated) {
+        //     navigate('/user/dashboard');
+        // }
     }, [isAuthenticated])
 
     const formik = useFormik({
