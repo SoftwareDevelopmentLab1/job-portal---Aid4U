@@ -13,6 +13,6 @@ router.put('/type/update/:type_id',isAuthenticated, isAdmin, updateJobType)
 
 
 // delete jobs
-router.get('/type/delete/:type_id',  isAuthenticated,isAdmin, deleteJobType)
+router.delete('/type/delete/:type_id',  isAuthenticated,isAdmin, deleteJobType)
 
 module.exports = router;

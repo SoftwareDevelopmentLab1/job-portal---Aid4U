@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "../../axios/axios";
 import { toast } from "react-toastify";
 import {
     ALL_USER_LOAD_FAIL,
@@ -23,7 +23,7 @@ import {
 export const userSignInAction = (user) => async (dispatch) => {
     dispatch({ type: USER_SIGNIN_REQUEST });
     try {
-        const { data } = await axios.post("/api/signin", user);
+        const { data } = await axios.post("/signin", user);
         localStorage.setItem('userInfo', JSON.stringify(data));
         dispatch({
             type: USER_SIGNIN_SUCCESS,
@@ -43,7 +43,7 @@ export const userSignInAction = (user) => async (dispatch) => {
 export const userLogoutAction = () => async (dispatch) => {
     dispatch({ type: USER_LOGOUT_REQUEST });
     try {
-        const { data } = await axios.get("/api/logout");
+        const { data } = await axios.get("/logout");
         localStorage.removeItem('userInfo');
         dispatch({
             type: USER_LOGOUT_SUCCESS,
@@ -64,7 +64,7 @@ export const userLogoutAction = () => async (dispatch) => {
 export const userProfileAction = () => async (dispatch) => {
     dispatch({ type: USER_LOAD_REQUEST });
     try {
-        const { data } = await axios.get("/api/me");
+        const { data } = await axios.get("/me");
         dispatch({
             type: USER_LOAD_SUCCESS,
             payload: data
@@ -83,7 +83,7 @@ export const userProfileAction = () => async (dispatch) => {
 export const allUserAction = () => async (dispatch) => {
     dispatch({ type: ALL_USER_LOAD_REQUEST });
     try {
-        const { data } = await axios.get("/api/allusers");
+        const { data } = await axios.get("/allusers");
         dispatch({
             type: ALL_USER_LOAD_SUCCESS,
             payload: data
@@ -101,7 +101,7 @@ export const allUserAction = () => async (dispatch) => {
 export const userApplyJobAction = (job) => async (dispatch) => {
     dispatch({ type: USER_APPLY_JOB_REQUEST });
     try {
-        const { data } = await axios.post("/api/user/jobhistory", job);
+        const { data } = await axios.post("/user/jobhistory", job);
 
         dispatch({
             type: USER_APPLY_JOB_SUCCESS,

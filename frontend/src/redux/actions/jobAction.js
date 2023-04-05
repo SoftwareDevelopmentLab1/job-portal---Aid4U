@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "../../axios/axios";
 import {
     JOB_LOAD_FAIL,
     JOB_LOAD_REQUEST,
@@ -12,7 +12,7 @@ import {
 export const jobLoadAction = (pageNumber, keyword = '', cat = '', location = '') => async (dispatch) => {
     dispatch({ type: JOB_LOAD_REQUEST });
     try {
-        const { data } = await axios.get(`/api/jobs/show/?pageNumber=${pageNumber}&keyword=${keyword}&cat=${cat}&location=${location}`)
+        const { data } = await axios.get(`/jobs/show/?pageNumber=${pageNumber}&keyword=${keyword}&cat=${cat}&location=${location}`)
         dispatch({
             type: JOB_LOAD_SUCCESS,
             payload: data
@@ -29,7 +29,7 @@ export const jobLoadAction = (pageNumber, keyword = '', cat = '', location = '')
 export const jobLoadSingleAction = (id) => async (dispatch) => {
     dispatch({ type: JOB_LOAD_SINGLE_REQUEST });
     try {
-        const { data } = await axios.get(`/api/job/${id}`);
+        const { data } = await axios.get(`/job/${id}`);
         dispatch({
             type: JOB_LOAD_SINGLE_SUCCESS,
             payload: data

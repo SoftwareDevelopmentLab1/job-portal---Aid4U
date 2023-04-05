@@ -37,6 +37,13 @@ app.use(bodyParser.urlencoded({
 
 app.use(cookieParser());
 app.use(cors());
+const corsOptions = {
+    origin:"http://localhost:3000",
+    credentials:true,
+    optionSuccessStatus:201
+  }
+  
+  app.use(cors(corsOptions))
 
 //Routes middleware
 // app.get('/', (req, res)=>{
@@ -52,7 +59,7 @@ app.use('/api', jobRoute);
 app.use(errorHandler);
 
 //port
-const port = process.env.PORT || 9000
+const port = process.env.PORT || 8000
 
 app.listen(port, ()=> {
     console.log(`Server running on port${port}`);
