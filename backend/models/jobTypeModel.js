@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { ObjectId} = mongoose.Schema;
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken")
+
 
 const jobTypeSchema = new mongoose.Schema({
 

@@ -5,7 +5,7 @@ const ErrorResponse = require("../utils/errorResponse");
 
 exports.signup = async (req, res, next)=>{
 
-   const {email, password} = req.body;
+   const {email} = req.body;
    const UserExist = await User.findOne({email: email});
 
    if(UserExist){
