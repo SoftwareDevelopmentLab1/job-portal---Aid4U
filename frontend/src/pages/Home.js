@@ -42,6 +42,7 @@ const Home = () => {
 
                 <Navbar />
                 <Header />
+
                 <Container>
                     <Stack
                         direction={{ xs: 'column', sm: 'row' }}
@@ -120,6 +121,7 @@ const Home = () => {
                     </Stack>
                 </Container>
             </Box>
+            <Footer/>
             
 
         </>
