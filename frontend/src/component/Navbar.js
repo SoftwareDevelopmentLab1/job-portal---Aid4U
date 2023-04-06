@@ -145,16 +145,32 @@ const Navbar = () => {
                                 Home
                             </Link>
                         </Button>
+                        <Button
+                            onClick={handleCloseNavMenu}
+                            sx={{ my: 2, color: 'white', display: 'block' }}>
+                            <Link to="/register" style={{ color: 'white', textDecoration: "none" }}>
+                                Register
+                            </Link>
+                        </Button>
 
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="" />
+                                <Avatar sx={{ color: palette.primary.white }} alt="Remy Sharp" src="" />
                             </IconButton>
                         </Tooltip>
                         <Menu
+                            PaperProps={{
+                                sx: {
+                                    "& 	.MuiMenu-list": {
+                                        bgcolor: "primary.white",
+                                        color: "white"
+                                    },
+                                }
+                            }}
+
                             sx={{ mt: '45px' }}
                             id="menu-appbar"
                             anchorEl={anchorElUser}
@@ -171,23 +187,23 @@ const Navbar = () => {
                             onClose={handleCloseUserMenu}
                         >
 
-                            <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.primary.main }} to="/admin/dashboard"> Admin Dashboard</Link></Typography>
-                            </MenuItem>
 
+<MenuItem onClick={handleCloseUserMenu}>
+                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.secondary.main }} to="/admin/dashboard">Admin Dashboard</Link></Typography>
+                            </MenuItem>
                             <MenuItem onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.primary.main }} to="/user/dashboard"> User Dashboard</Link></Typography>
+                                <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.secondary.main }} to="/user/dashboard">User Dashboard</Link></Typography>
                             </MenuItem>
 
                             {
                                 !userInfo ?
 
                                     <MenuItem onClick={handleCloseUserMenu}>
-                                        <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.primary.main }} to="/login">Log In</Link></Typography>
+                                        <Typography textAlign="center"><Link style={{ textDecoration: "none", color: palette.secondary.main }} to="/login">Log In</Link></Typography>
                                     </MenuItem> :
 
                                     <MenuItem onClick={logOutUser}>
-                                        <Typography style={{ textDecoration: "none", color: palette.primary.main }} textAlign="center">Log Out</Typography>
+                                        <Typography style={{ textDecoration: "none", color: palette.secondary.main }} textAlign="center">Log Out</Typography>
                                     </MenuItem>
                             }
 

@@ -15,7 +15,10 @@ import {
     USER_LOGOUT_SUCCESS,
     USER_SIGNIN_FAIL,
     USER_SIGNIN_REQUEST,
-    USER_SIGNIN_SUCCESS
+    USER_SIGNIN_SUCCESS,
+    USER_SIGNUP_FAIL,
+    USER_SIGNUP_REQUEST,
+    USER_SIGNUP_SUCCESS
 } from '../constants/userConstant';
 
 
@@ -33,6 +36,26 @@ export const userSignInAction = (user) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: USER_SIGNIN_FAIL,
+            payload: error.response.data.error
+        });
+        toast.error(error.response.data.error);
+    }
+}
+
+// user sign up action
+export const userSignUpAction = (user) => async (dispatch) => {
+    dispatch({ type: USER_SIGNUP_REQUEST });
+    try {
+        const { data } = await axios.post("/signup", user);
+
+        dispatch({
+            type: USER_SIGNUP_SUCCESS,
+            payload: data
+        });
+        toast.success("Register Successfully!");
+    } catch (error) {
+        dispatch({
+            type: USER_SIGNUP_FAIL,
             payload: error.response.data.error
         });
         toast.error(error.response.data.error);

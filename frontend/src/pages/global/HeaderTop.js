@@ -11,6 +11,9 @@ import SearchIcon from '@mui/icons-material/Search';
 //import sidebar hook
 import { useProSidebar } from 'react-pro-sidebar';
 
+import { useTheme } from '@emotion/react';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -55,10 +58,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const HeaderTop = () => {
+
     const { collapseSidebar } = useProSidebar();
+    const { palette } = useTheme();
+    const dispatch = useDispatch();
+
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" sx={{ boxShadow: 0 }}>
+            <AppBar position="static" sx={{ boxShadow: 0, bgcolor: "primary.main" }}>
                 <Toolbar>
                     <IconButton onClick={() => collapseSidebar()}
                         size="large"
@@ -77,6 +84,9 @@ const HeaderTop = () => {
                     >
                         HR APP
                     </Typography>
+
+                  
+
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon />

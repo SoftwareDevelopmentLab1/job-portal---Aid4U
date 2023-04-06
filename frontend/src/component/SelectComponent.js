@@ -5,16 +5,26 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useSelector } from 'react-redux';
+import { useTheme } from '@emotion/react';
 
 const SelectComponent = ({ handleChangeCategory, cat }) => {
 
     const { jobType } = useSelector(state => state.jobTypeAll);
-
+    const { palette } = useTheme();
     return (
         <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Category</InputLabel>
                 <Select
+                  inputProps={{
+                        MenuProps: {
+                            MenuListProps: {
+                                sx: {
+                                    backgroundColor: palette.secondary.main
+                                }
+                            }
+                        }
+                    }}
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={cat}

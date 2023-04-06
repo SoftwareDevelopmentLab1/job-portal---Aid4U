@@ -18,6 +18,7 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import SingleJob from './pages/SingleJob';
 import DashUsers from './pages/admin/DashUsers';
 import DashJobs from './pages/admin/DashJobs';
+import Register from './pages/Register';
 
 //HOC
 const UserDashboardHOC = Layout(UserDashboard);
@@ -40,10 +41,11 @@ const App = () => {
                 <ProSidebarProvider>
                     <BrowserRouter>
                         <Routes>
-                            <Route path='/' element={<Home />} />
+                        <Route path='/' element={<Home />} />
                             <Route path='/search/location/:location' element={<Home />} />
                             <Route path='/search/:keyword' element={<Home />} />
                             <Route path='/login' element={<LogIn />} />
+                            <Route path='/register' element={<Register />} />
                             <Route path='/job/:id' element={<SingleJob />} />
                             <Route path='/admin/dashboard' element={<AdminRoute><AdminDashboardHOC /></AdminRoute>} />
                             <Route path='/admin/users' element={<AdminRoute><DashUsersHOC /></AdminRoute>} />
